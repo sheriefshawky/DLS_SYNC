@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-dls-req-exams-heading" jhiTranslate="dlssyncApp.dlsReqExams.home.createOrEditLabel">Create or edit a Dls Req Exams</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsReqExams.examCode" for="field_examCode">Exam Code</label>
+                    <input type="number" class="form-control" name="examCode" id="field_examCode"
+                           formControlName="examCode"/>
+                    <div *ngIf="editForm.get('examCode').invalid && (editForm.get('examCode').dirty || editForm.get('examCode').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('examCode').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('examCode')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsReqExams.examResult" for="field_examResult">Exam Result</label>
+                    <input type="number" class="form-control" name="examResult" id="field_examResult"
+                           formControlName="examResult"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsReqExams.examDate" for="field_examDate">Exam Date</label>
+                    <div class="d-flex">
+                        <input id="field_examDate" type="datetime-local" class="form-control" name="examDate" formControlName="examDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsReqExams.examGrade" for="field_examGrade">Exam Grade</label>
+                    <input type="number" class="form-control" name="examGrade" id="field_examGrade"
+                           formControlName="examGrade"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsReqExams.isEligibile" for="field_isEligibile">Is Eligibile</label>
+                    <input type="number" class="form-control" name="isEligibile" id="field_isEligibile"
+                           formControlName="isEligibile"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsReqExams.exported" for="field_exported">Exported</label>
+                    <input type="checkbox" class="form-control" name="exported" id="field_exported"
+                           formControlName="exported"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsReqExams.dlsRequests" for="field_dlsRequests">Dls Requests</label>
+                    <select class="form-control" id="field_dlsRequests" name="dlsRequests" formControlName="dlsRequests">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dlsRequestsOption.id === editForm.get('dlsRequests').value?.id ? editForm.get('dlsRequests').value : dlsRequestsOption" *ngFor="let dlsRequestsOption of dlsrequests; trackBy: trackDlsRequestsById">{{dlsRequestsOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

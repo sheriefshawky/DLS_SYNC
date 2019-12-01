@@ -1,0 +1,60 @@
+
+
+entity DlsPersons {
+	fullName String required,
+	mobileNo String required,
+	licenseCategory Integer required,
+    nationalId String,
+    passportKey String,
+    transactionType Integer required,
+    exported Boolean
+}
+
+entity DlsRequests {
+    transactionType Integer required,
+    requestNo Long,
+    exported Boolean
+}
+
+relationship OneToMany {
+	DlsPersons{requests} to DlsRequests
+}
+
+entity DlsReqExams {
+  	examCode Integer required,
+    examResult Integer ,
+    examDate Instant,
+    examGrade Integer,
+    isEligibile Integer,
+    exported Boolean
+}
+
+relationship OneToMany {
+	DlsRequests{exams} to DlsReqExams
+}
+
+entity DlsReqTrainings {
+  	trainingCode Integer required,
+    trainingLectures Integer,
+    trainingfulfilled Integer ,
+    exported Boolean
+}
+
+relationship OneToMany {
+	DlsRequests{trainings} to DlsReqTrainings
+}
+
+
+
+// Set pagination options
+paginate DlsPersons, DlsRequests, DlsReqExams, DlsReqTrainings with infinite-scroll
+paginate DlsPersons, DlsRequests, DlsReqExams, DlsReqTrainings with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

@@ -1,0 +1,75 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="dlssyncApp.dlsPersons.home.title">Dls Persons</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dls-persons" [routerLink]="['/dls-persons/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="dlssyncApp.dlsPersons.home.createLabel">
+            Create a new Dls Persons
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="dlsPersons?.length === 0">
+        <span jhiTranslate="dlssyncApp.dlsPersons.home.notFound">No dlsPersons found</span>
+    </div>
+    <div class="table-responsive" *ngIf="dlsPersons?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fullName"><span jhiTranslate="dlssyncApp.dlsPersons.fullName">Full Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="mobileNo"><span jhiTranslate="dlssyncApp.dlsPersons.mobileNo">Mobile No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="licenseCategory"><span jhiTranslate="dlssyncApp.dlsPersons.licenseCategory">License Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nationalId"><span jhiTranslate="dlssyncApp.dlsPersons.nationalId">National Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="passportKey"><span jhiTranslate="dlssyncApp.dlsPersons.passportKey">Passport Key</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="transactionType"><span jhiTranslate="dlssyncApp.dlsPersons.transactionType">Transaction Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="exported"><span jhiTranslate="dlssyncApp.dlsPersons.exported">Exported</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dlsPersons of dlsPersons ;trackBy: trackId">
+                <td><a [routerLink]="['/dls-persons', dlsPersons.id, 'view' ]">{{dlsPersons.id}}</a></td>
+                <td>{{dlsPersons.fullName}}</td>
+                <td>{{dlsPersons.mobileNo}}</td>
+                <td>{{dlsPersons.licenseCategory}}</td>
+                <td>{{dlsPersons.nationalId}}</td>
+                <td>{{dlsPersons.passportKey}}</td>
+                <td>{{dlsPersons.transactionType}}</td>
+                <td>{{dlsPersons.exported}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/dls-persons', dlsPersons.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/dls-persons', dlsPersons.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(dlsPersons)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="dlsPersons?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
