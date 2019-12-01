@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity DlsReqTrainings.
+    -->
+    <changeSet id="20191201201735-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="dls_requests_id"
+                                 baseTableName="dls_req_trainings"
+                                 constraintName="fk_dls_req_trainings_dls_requests_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dls_requests"/>
+
+    </changeSet>
+</databaseChangeLog>

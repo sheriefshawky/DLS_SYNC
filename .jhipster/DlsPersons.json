@@ -1,0 +1,63 @@
+{
+    "name": "DlsPersons",
+    "fields": [
+        {
+            "fieldName": "fullName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "mobileNo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "licenseCategory",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nationalId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "passportKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "transactionType",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "exported",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "dlsRequests",
+            "otherEntityRelationshipName": "dlsPersons",
+            "relationshipName": "requests"
+        }
+    ],
+    "changelogDate": "20191201201732",
+    "entityTableName": "dls_persons",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

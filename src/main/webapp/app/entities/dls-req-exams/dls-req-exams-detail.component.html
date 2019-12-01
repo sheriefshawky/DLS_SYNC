@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dlsReqExams">
+            <h2><span jhiTranslate="dlssyncApp.dlsReqExams.detail.title">Dls Req Exams</span> {{dlsReqExams.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dlssyncApp.dlsReqExams.examCode">Exam Code</span></dt>
+                <dd>
+                    <span>{{dlsReqExams.examCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsReqExams.examResult">Exam Result</span></dt>
+                <dd>
+                    <span>{{dlsReqExams.examResult}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsReqExams.examDate">Exam Date</span></dt>
+                <dd>
+                    <span>{{dlsReqExams.examDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsReqExams.examGrade">Exam Grade</span></dt>
+                <dd>
+                    <span>{{dlsReqExams.examGrade}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsReqExams.isEligibile">Is Eligibile</span></dt>
+                <dd>
+                    <span>{{dlsReqExams.isEligibile}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsReqExams.exported">Exported</span></dt>
+                <dd>
+                    <span>{{dlsReqExams.exported}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsReqExams.dlsRequests">Dls Requests</span></dt>
+                <dd>
+                    <div *ngIf="dlsReqExams.dlsRequests">
+                        <a [routerLink]="['/dls-requests', dlsReqExams.dlsRequests?.id, 'view']">{{dlsReqExams.dlsRequests?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dls-req-exams', dlsReqExams.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
