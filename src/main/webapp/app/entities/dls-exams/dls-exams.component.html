@@ -1,0 +1,65 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="dlssyncApp.dlsExams.home.title">Dls Exams</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dls-exams" [routerLink]="['/dls-exams/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="dlssyncApp.dlsExams.home.createLabel">
+            Create a new Dls Exams
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="dlsExams?.length === 0">
+        <span jhiTranslate="dlssyncApp.dlsExams.home.notFound">No dlsExams found</span>
+    </div>
+    <div class="table-responsive" *ngIf="dlsExams?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="dlssyncApp.dlsExams.code">Code</span></th>
+            <th scope="col" ><span jhiTranslate="dlssyncApp.dlsExams.nameAr">Name Ar</span></th>
+            <th scope="col" ><span jhiTranslate="dlssyncApp.dlsExams.nameEn">Name En</span></th>
+            <th scope="col" ><span jhiTranslate="dlssyncApp.dlsExams.testId">Test Id</span></th>
+            <th scope="col" ><span jhiTranslate="dlssyncApp.dlsExams.qroupId">Qroup Id</span></th>
+            <th scope="col" ><span jhiTranslate="dlssyncApp.dlsExams.passPercentage">Pass Percentage</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dlsExams of dlsExams ;trackBy: trackId">
+                <td><a [routerLink]="['/dls-exams', dlsExams.id, 'view' ]">{{dlsExams.id}}</a></td>
+                <td>{{dlsExams.code}}</td>
+                <td>{{dlsExams.nameAr}}</td>
+                <td>{{dlsExams.nameEn}}</td>
+                <td>{{dlsExams.testId}}</td>
+                <td>{{dlsExams.qroupId}}</td>
+                <td>{{dlsExams.passPercentage}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/dls-exams', dlsExams.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/dls-exams', dlsExams.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(dlsExams)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

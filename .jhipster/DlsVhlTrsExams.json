@@ -1,0 +1,59 @@
+{
+    "name": "DlsVhlTrsExams",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nameAr",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nameEn",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dlsExams",
+            "otherEntityRelationshipName": "dlsVhlTrsExams",
+            "relationshipName": "exams",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dlsVehicleTypes",
+            "otherEntityRelationshipName": "dlsVhlTrsExams",
+            "relationshipName": "vehicleTypes",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dlsTrsTypes",
+            "otherEntityRelationshipName": "dlsVhlTrsExams",
+            "relationshipName": "trsTypes",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191209144052",
+    "entityTableName": "dls_vhl_trs_exams",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
