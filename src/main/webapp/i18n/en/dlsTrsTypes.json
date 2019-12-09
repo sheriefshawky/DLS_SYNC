@@ -1,0 +1,25 @@
+{
+  "dlssyncApp": {
+    "dlsTrsTypes": {
+      "home": {
+        "title": "Dls Trs Types",
+        "createLabel": "Create a new Dls Trs Types",
+        "createOrEditLabel": "Create or edit a Dls Trs Types",
+        "notFound": "No Dls Trs Types found"
+      },
+      "created": "A new Dls Trs Types is created with identifier {{ param }}",
+      "updated": "A Dls Trs Types is updated with identifier {{ param }}",
+      "deleted": "A Dls Trs Types is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dls Trs Types {{ id }}?"
+      },
+      "detail": {
+        "title": "Dls Trs Types"
+      },
+      "code": "Code",
+      "nameAr": "Name Ar",
+      "nameEn": "Name En",
+      "dlsVhlTrsExams": "Dls Vhl Trs Exams"
+    }
+  }
+}
