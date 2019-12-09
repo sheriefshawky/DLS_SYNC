@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dlsVhlTrsExams">
+            <h2><span jhiTranslate="dlssyncApp.dlsVhlTrsExams.detail.title">Dls Vhl Trs Exams</span> {{dlsVhlTrsExams.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dlssyncApp.dlsVhlTrsExams.code">Code</span></dt>
+                <dd>
+                    <span>{{dlsVhlTrsExams.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsVhlTrsExams.nameAr">Name Ar</span></dt>
+                <dd>
+                    <span>{{dlsVhlTrsExams.nameAr}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsVhlTrsExams.nameEn">Name En</span></dt>
+                <dd>
+                    <span>{{dlsVhlTrsExams.nameEn}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsVhlTrsExams.exams">Exams</span></dt>
+                <dd>
+                    <div *ngIf="dlsVhlTrsExams.exams">
+                        <a [routerLink]="['/dls-exams', dlsVhlTrsExams.exams?.id, 'view']">{{dlsVhlTrsExams.exams?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsVhlTrsExams.vehicleTypes">Vehicle Types</span></dt>
+                <dd>
+                    <div *ngIf="dlsVhlTrsExams.vehicleTypes">
+                        <a [routerLink]="['/dls-vehicle-types', dlsVhlTrsExams.vehicleTypes?.id, 'view']">{{dlsVhlTrsExams.vehicleTypes?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsVhlTrsExams.trsTypes">Trs Types</span></dt>
+                <dd>
+                    <div *ngIf="dlsVhlTrsExams.trsTypes">
+                        <a [routerLink]="['/dls-trs-types', dlsVhlTrsExams.trsTypes?.id, 'view']">{{dlsVhlTrsExams.trsTypes?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dls-vhl-trs-exams', dlsVhlTrsExams.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

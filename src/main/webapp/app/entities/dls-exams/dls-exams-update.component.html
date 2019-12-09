@@ -1,0 +1,94 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-dls-exams-heading" jhiTranslate="dlssyncApp.dlsExams.home.createOrEditLabel">Create or edit a Dls Exams</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsExams.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                           formControlName="code"/>
+                    <div *ngIf="editForm.get('code').invalid && (editForm.get('code').dirty || editForm.get('code').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('code').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsExams.nameAr" for="field_nameAr">Name Ar</label>
+                    <input type="text" class="form-control" name="nameAr" id="field_nameAr"
+                           formControlName="nameAr"/>
+                    <div *ngIf="editForm.get('nameAr').invalid && (editForm.get('nameAr').dirty || editForm.get('nameAr').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameAr').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsExams.nameEn" for="field_nameEn">Name En</label>
+                    <input type="text" class="form-control" name="nameEn" id="field_nameEn"
+                           formControlName="nameEn"/>
+                    <div *ngIf="editForm.get('nameEn').invalid && (editForm.get('nameEn').dirty || editForm.get('nameEn').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameEn').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsExams.testId" for="field_testId">Test Id</label>
+                    <input type="text" class="form-control" name="testId" id="field_testId"
+                           formControlName="testId"/>
+                    <div *ngIf="editForm.get('testId').invalid && (editForm.get('testId').dirty || editForm.get('testId').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('testId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsExams.qroupId" for="field_qroupId">Qroup Id</label>
+                    <input type="text" class="form-control" name="qroupId" id="field_qroupId"
+                           formControlName="qroupId"/>
+                    <div *ngIf="editForm.get('qroupId').invalid && (editForm.get('qroupId').dirty || editForm.get('qroupId').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('qroupId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsExams.passPercentage" for="field_passPercentage">Pass Percentage</label>
+                    <input type="number" class="form-control" name="passPercentage" id="field_passPercentage"
+                           formControlName="passPercentage"/>
+                    <div *ngIf="editForm.get('passPercentage').invalid && (editForm.get('passPercentage').dirty || editForm.get('passPercentage').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('passPercentage').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('passPercentage')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

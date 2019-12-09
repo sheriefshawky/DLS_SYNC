@@ -1,0 +1,53 @@
+
+
+entity DlsExams {
+	code String required,
+	nameAr String required,
+    nameEn String required,
+	testId String required,
+    qroupId String required,
+    passPercentage Double required
+}
+
+entity DlsTrsTypes {
+    code String required,
+    nameAr String required,
+    nameEn String required
+}
+
+entity DlsVehicleTypes {
+  	code String required,
+    nameAr String required,
+    nameEn String required
+}
+
+entity DlsVhlTrsExams {
+  	code String required,
+    nameAr String required,
+    nameEn String required
+}
+
+relationship ManyToOne {
+	DlsVhlTrsExams{exams} to DlsExams
+}
+
+relationship ManyToOne {
+	DlsVhlTrsExams{vehicleTypes} to DlsVehicleTypes
+}
+
+relationship ManyToOne {
+	DlsVhlTrsExams{trsTypes} to DlsTrsTypes
+}
+
+
+
+// Set pagination options
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

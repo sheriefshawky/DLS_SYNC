@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity DlsVhlTrsExams.
+    -->
+    <changeSet id="20191209144052-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="exams_id"
+                                 baseTableName="dls_vhl_trs_exams"
+                                 constraintName="fk_dls_vhl_trs_exams_exams_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dls_exams"/>
+
+        <addForeignKeyConstraint baseColumnNames="vehicle_types_id"
+                                 baseTableName="dls_vhl_trs_exams"
+                                 constraintName="fk_dls_vhl_trs_exams_vehicle_types_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dls_vehicle_types"/>
+
+        <addForeignKeyConstraint baseColumnNames="trs_types_id"
+                                 baseTableName="dls_vhl_trs_exams"
+                                 constraintName="fk_dls_vhl_trs_exams_trs_types_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dls_trs_types"/>
+
+    </changeSet>
+</databaseChangeLog>

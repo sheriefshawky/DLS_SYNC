@@ -1,0 +1,27 @@
+{
+  "dlssyncApp": {
+    "dlsVhlTrsExams": {
+      "home": {
+        "title": "Dls Vhl Trs Exams",
+        "createLabel": "Create a new Dls Vhl Trs Exams",
+        "createOrEditLabel": "Create or edit a Dls Vhl Trs Exams",
+        "notFound": "No Dls Vhl Trs Exams found"
+      },
+      "created": "A new Dls Vhl Trs Exams is created with identifier {{ param }}",
+      "updated": "A Dls Vhl Trs Exams is updated with identifier {{ param }}",
+      "deleted": "A Dls Vhl Trs Exams is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dls Vhl Trs Exams {{ id }}?"
+      },
+      "detail": {
+        "title": "Dls Vhl Trs Exams"
+      },
+      "code": "Code",
+      "nameAr": "Name Ar",
+      "nameEn": "Name En",
+      "exams": "Exams",
+      "vehicleTypes": "Vehicle Types",
+      "trsTypes": "Trs Types"
+    }
+  }
+}
