@@ -1,0 +1,65 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="dlssyncApp.dlsVehicleTypes.home.title">Dls Vehicle Types</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dls-vehicle-types" [routerLink]="['/dls-vehicle-types/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="dlssyncApp.dlsVehicleTypes.home.createLabel">
+            Create a new Dls Vehicle Types
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="dlsVehicleTypes?.length === 0">
+        <span jhiTranslate="dlssyncApp.dlsVehicleTypes.home.notFound">No dlsVehicleTypes found</span>
+    </div>
+    <div class="table-responsive" *ngIf="dlsVehicleTypes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="dlssyncApp.dlsVehicleTypes.code">Code</span></th>
+            <th scope="col" ><span jhiTranslate="dlssyncApp.dlsVehicleTypes.nameAr">Name Ar</span></th>
+            <th scope="col" ><span jhiTranslate="dlssyncApp.dlsVehicleTypes.nameEn">Name En</span></th>
+            <th scope="col" ><span jhiTranslate="dlssyncApp.dlsVehicleTypes.dlsVhlTrsExams">Dls Vhl Trs Exams</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dlsVehicleTypes of dlsVehicleTypes ;trackBy: trackId">
+                <td><a [routerLink]="['/dls-vehicle-types', dlsVehicleTypes.id, 'view' ]">{{dlsVehicleTypes.id}}</a></td>
+                <td>{{dlsVehicleTypes.code}}</td>
+                <td>{{dlsVehicleTypes.nameAr}}</td>
+                <td>{{dlsVehicleTypes.nameEn}}</td>
+                <td>
+                    <div *ngIf="dlsVehicleTypes.dlsVhlTrsExams">
+                        <a [routerLink]="['/dls-vhl-trs-exams', dlsVehicleTypes.dlsVhlTrsExams?.id, 'view' ]" >{{dlsVehicleTypes.dlsVhlTrsExams?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/dls-vehicle-types', dlsVehicleTypes.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/dls-vehicle-types', dlsVehicleTypes.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(dlsVehicleTypes)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

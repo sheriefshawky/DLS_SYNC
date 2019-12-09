@@ -1,0 +1,25 @@
+{
+  "dlssyncApp": {
+    "dlsVehicleTypes": {
+      "home": {
+        "title": "Dls Vehicle Types",
+        "createLabel": "Create a new Dls Vehicle Types",
+        "createOrEditLabel": "Create or edit a Dls Vehicle Types",
+        "notFound": "No Dls Vehicle Types found"
+      },
+      "created": "A new Dls Vehicle Types is created with identifier {{ param }}",
+      "updated": "A Dls Vehicle Types is updated with identifier {{ param }}",
+      "deleted": "A Dls Vehicle Types is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dls Vehicle Types {{ id }}?"
+      },
+      "detail": {
+        "title": "Dls Vehicle Types"
+      },
+      "code": "Code",
+      "nameAr": "Name Ar",
+      "nameEn": "Name En",
+      "dlsVhlTrsExams": "Dls Vhl Trs Exams"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+    "name": "DlsVehicleTypes",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nameAr",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nameEn",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dlsVhlTrsExams",
+            "otherEntityRelationshipName": "vehicleTypes",
+            "relationshipName": "dlsVhlTrsExams",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191209143734",
+    "entityTableName": "dls_vehicle_types",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
