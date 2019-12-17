@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="dlssyncApp.templateCategories.home.title">Template Categories</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-template-categories" [routerLink]="['/template-categories/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="dlssyncApp.templateCategories.home.createLabel">
+            Create a new Template Categories
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="templateCategories?.length === 0">
+        <span jhiTranslate="dlssyncApp.templateCategories.home.notFound">No templateCategories found</span>
+    </div>
+    <div class="table-responsive" *ngIf="templateCategories?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="noOfQuestions"><span jhiTranslate="dlssyncApp.templateCategories.noOfQuestions">No Of Questions</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="seq"><span jhiTranslate="dlssyncApp.templateCategories.seq">Seq</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="category.id"><span jhiTranslate="dlssyncApp.templateCategories.category">Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="template.id"><span jhiTranslate="dlssyncApp.templateCategories.template">Template</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let templateCategories of templateCategories ;trackBy: trackId">
+                <td><a [routerLink]="['/template-categories', templateCategories.id, 'view' ]">{{templateCategories.id}}</a></td>
+                <td>{{templateCategories.noOfQuestions}}</td>
+                <td>{{templateCategories.seq}}</td>
+                <td>
+                    <div *ngIf="templateCategories.category">
+                        <a [routerLink]="['/categories', templateCategories.category?.id, 'view' ]" >{{templateCategories.category?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="templateCategories.template">
+                        <a [routerLink]="['/template', templateCategories.template?.id, 'view' ]" >{{templateCategories.template?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/template-categories', templateCategories.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/template-categories', templateCategories.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(templateCategories)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="templateCategories?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

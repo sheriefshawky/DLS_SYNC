@@ -1,0 +1,81 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="dlssyncApp.examQuestionAnswers.home.title">Exam Question Answers</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-exam-question-answers" [routerLink]="['/exam-question-answers/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="dlssyncApp.examQuestionAnswers.home.createLabel">
+            Create a new Exam Question Answers
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="examQuestionAnswers?.length === 0">
+        <span jhiTranslate="dlssyncApp.examQuestionAnswers.home.notFound">No examQuestionAnswers found</span>
+    </div>
+    <div class="table-responsive" *ngIf="examQuestionAnswers?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descAr"><span jhiTranslate="dlssyncApp.examQuestionAnswers.descAr">Desc Ar</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descEn"><span jhiTranslate="dlssyncApp.examQuestionAnswers.descEn">Desc En</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="code"><span jhiTranslate="dlssyncApp.examQuestionAnswers.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="imgPath"><span jhiTranslate="dlssyncApp.examQuestionAnswers.imgPath">Img Path</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="isRightAnswer"><span jhiTranslate="dlssyncApp.examQuestionAnswers.isRightAnswer">Is Right Answer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="status"><span jhiTranslate="dlssyncApp.examQuestionAnswers.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="answerId"><span jhiTranslate="dlssyncApp.examQuestionAnswers.answerId">Answer Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="examQuestions.id"><span jhiTranslate="dlssyncApp.examQuestionAnswers.examQuestions">Exam Questions</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let examQuestionAnswers of examQuestionAnswers ;trackBy: trackId">
+                <td><a [routerLink]="['/exam-question-answers', examQuestionAnswers.id, 'view' ]">{{examQuestionAnswers.id}}</a></td>
+                <td>{{examQuestionAnswers.descAr}}</td>
+                <td>{{examQuestionAnswers.descEn}}</td>
+                <td>{{examQuestionAnswers.code}}</td>
+                <td>{{examQuestionAnswers.imgPath}}</td>
+                <td>{{examQuestionAnswers.isRightAnswer}}</td>
+                <td>{{examQuestionAnswers.status}}</td>
+                <td>{{examQuestionAnswers.answerId}}</td>
+                <td>
+                    <div *ngIf="examQuestionAnswers.examQuestions">
+                        <a [routerLink]="['/exam-questions', examQuestionAnswers.examQuestions?.id, 'view' ]" >{{examQuestionAnswers.examQuestions?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/exam-question-answers', examQuestionAnswers.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/exam-question-answers', examQuestionAnswers.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(examQuestionAnswers)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="examQuestionAnswers?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,124 @@
+
+
+entity Categories {
+	nameAr String required,
+	nameEn String required,
+	code String required,
+    status Integer
+}
+
+entity Questions {
+	descAr String required,
+	descEn String required,
+	code String required,
+    imgPath String,
+    timeInSec Long,
+    type Integer required,
+    weight Double required,
+    status Integer
+}
+
+entity Answers {
+	descAr String required,
+	descEn String required,
+	code String required,
+    imgPath String,
+	isRightAnswer Boolean,
+    status Integer
+}
+
+relationship OneToMany {
+	Categories{questions} to Questions
+}
+
+relationship OneToMany {
+	Questions{answers} to Answers
+}
+
+
+entity Template {
+  	nameAr String required,
+	nameEn String required,
+	code String required,
+    timeInSec Long,
+    passScore Double,
+    status Integer
+}
+
+entity TemplateCategories {
+    noOfQuestions Integer required,
+    seq Integer required
+}
+
+relationship OneToMany {
+	Template{categories} to TemplateCategories
+}
+
+relationship OneToOne {
+	TemplateCategories{category} to Categories
+}
+
+entity Exam{
+	validfrom Instant required,
+    validto Instant required,
+    timeInSec Long,
+    score Double,
+    status Integer required,
+    passScore Double,
+    startAt Instant,
+    submitAt Instant
+}
+
+relationship OneToOne {
+	Exam{template} to Template
+}
+
+relationship OneToMany {
+	Exam{examQuestions} to ExamQuestions
+}
+
+entity ExamQuestions{
+	descAr String required,
+	descEn String required,
+	code String required,
+    imgPath String,
+    timeInSec Long,
+    type Integer required,
+    weight Double required,
+    score Double,
+    status Integer,
+    seq Integer,
+    categoryId Integer,
+    questionId Integer,
+    startAt Instant,
+    submitAt Instant
+}
+
+relationship OneToMany {
+	ExamQuestions{examQuestionAnswers} to ExamQuestionAnswers
+}
+
+entity ExamQuestionAnswers{
+	descAr String required,
+	descEn String required,
+	code String required,
+    imgPath String,
+	isRightAnswer Boolean,
+    status Integer,
+    answerId Integer
+}
+
+
+
+// Set pagination options
+paginate all with infinite-scroll
+paginate all with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

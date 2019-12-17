@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="dlssyncApp.answers.home.title">Answers</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-answers" [routerLink]="['/answers/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="dlssyncApp.answers.home.createLabel">
+            Create a new Answers
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="answers?.length === 0">
+        <span jhiTranslate="dlssyncApp.answers.home.notFound">No answers found</span>
+    </div>
+    <div class="table-responsive" *ngIf="answers?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descAr"><span jhiTranslate="dlssyncApp.answers.descAr">Desc Ar</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descEn"><span jhiTranslate="dlssyncApp.answers.descEn">Desc En</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="code"><span jhiTranslate="dlssyncApp.answers.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="imgPath"><span jhiTranslate="dlssyncApp.answers.imgPath">Img Path</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="isRightAnswer"><span jhiTranslate="dlssyncApp.answers.isRightAnswer">Is Right Answer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="status"><span jhiTranslate="dlssyncApp.answers.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="questions.id"><span jhiTranslate="dlssyncApp.answers.questions">Questions</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let answers of answers ;trackBy: trackId">
+                <td><a [routerLink]="['/answers', answers.id, 'view' ]">{{answers.id}}</a></td>
+                <td>{{answers.descAr}}</td>
+                <td>{{answers.descEn}}</td>
+                <td>{{answers.code}}</td>
+                <td>{{answers.imgPath}}</td>
+                <td>{{answers.isRightAnswer}}</td>
+                <td>{{answers.status}}</td>
+                <td>
+                    <div *ngIf="answers.questions">
+                        <a [routerLink]="['/questions', answers.questions?.id, 'view' ]" >{{answers.questions?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/answers', answers.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/answers', answers.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(answers)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="answers?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

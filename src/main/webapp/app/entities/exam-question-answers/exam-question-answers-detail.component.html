@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="examQuestionAnswers">
+            <h2><span jhiTranslate="dlssyncApp.examQuestionAnswers.detail.title">Exam Question Answers</span> {{examQuestionAnswers.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dlssyncApp.examQuestionAnswers.descAr">Desc Ar</span></dt>
+                <dd>
+                    <span>{{examQuestionAnswers.descAr}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestionAnswers.descEn">Desc En</span></dt>
+                <dd>
+                    <span>{{examQuestionAnswers.descEn}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestionAnswers.code">Code</span></dt>
+                <dd>
+                    <span>{{examQuestionAnswers.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestionAnswers.imgPath">Img Path</span></dt>
+                <dd>
+                    <span>{{examQuestionAnswers.imgPath}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestionAnswers.isRightAnswer">Is Right Answer</span></dt>
+                <dd>
+                    <span>{{examQuestionAnswers.isRightAnswer}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestionAnswers.status">Status</span></dt>
+                <dd>
+                    <span>{{examQuestionAnswers.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestionAnswers.answerId">Answer Id</span></dt>
+                <dd>
+                    <span>{{examQuestionAnswers.answerId}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestionAnswers.examQuestions">Exam Questions</span></dt>
+                <dd>
+                    <div *ngIf="examQuestionAnswers.examQuestions">
+                        <a [routerLink]="['/exam-questions', examQuestionAnswers.examQuestions?.id, 'view']">{{examQuestionAnswers.examQuestions?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/exam-question-answers', examQuestionAnswers.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
