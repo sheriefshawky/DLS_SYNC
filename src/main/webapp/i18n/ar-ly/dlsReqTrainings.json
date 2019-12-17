@@ -1,0 +1,26 @@
+{
+  "dlssyncApp": {
+    "dlsReqTrainings": {
+      "home": {
+        "title": "Dls Req Trainings",
+        "createLabel": "Create a new Dls Req Trainings",
+        "createOrEditLabel": "Create or edit a Dls Req Trainings",
+        "notFound": "No Dls Req Trainings found"
+      },
+      "created": "A new Dls Req Trainings is created with identifier {{ param }}",
+      "updated": "A Dls Req Trainings is updated with identifier {{ param }}",
+      "deleted": "A Dls Req Trainings is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dls Req Trainings {{ id }}?"
+      },
+      "detail": {
+        "title": "Dls Req Trainings"
+      },
+      "trainingCode": "Training Code",
+      "trainingLectures": "Training Lectures",
+      "trainingfulfilled": "Trainingfulfilled",
+      "exported": "Exported",
+      "dlsRequests": "Dls Requests"
+    }
+  }
+}

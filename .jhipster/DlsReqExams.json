@@ -1,0 +1,51 @@
+{
+    "name": "DlsReqExams",
+    "fields": [
+        {
+            "fieldName": "examCode",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "examResult",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "examDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "examGrade",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "isEligibile",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "exported",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dlsRequests",
+            "otherEntityRelationshipName": "exams",
+            "relationshipName": "dlsRequests",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191217103440",
+    "entityTableName": "dls_req_exams",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

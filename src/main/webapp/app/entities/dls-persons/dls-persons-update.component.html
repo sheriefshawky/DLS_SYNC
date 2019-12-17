@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-dls-persons-heading" jhiTranslate="dlssyncApp.dlsPersons.home.createOrEditLabel">Create or edit a Dls Persons</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsPersons.fullName" for="field_fullName">Full Name</label>
+                    <input type="text" class="form-control" name="fullName" id="field_fullName"
+                           formControlName="fullName"/>
+                    <div *ngIf="editForm.get('fullName').invalid && (editForm.get('fullName').dirty || editForm.get('fullName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fullName').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsPersons.mobileNo" for="field_mobileNo">Mobile No</label>
+                    <input type="text" class="form-control" name="mobileNo" id="field_mobileNo"
+                           formControlName="mobileNo"/>
+                    <div *ngIf="editForm.get('mobileNo').invalid && (editForm.get('mobileNo').dirty || editForm.get('mobileNo').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('mobileNo').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsPersons.licenseCategory" for="field_licenseCategory">License Category</label>
+                    <input type="number" class="form-control" name="licenseCategory" id="field_licenseCategory"
+                           formControlName="licenseCategory"/>
+                    <div *ngIf="editForm.get('licenseCategory').invalid && (editForm.get('licenseCategory').dirty || editForm.get('licenseCategory').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('licenseCategory').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('licenseCategory')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsPersons.nationalId" for="field_nationalId">National Id</label>
+                    <input type="text" class="form-control" name="nationalId" id="field_nationalId"
+                           formControlName="nationalId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsPersons.passportKey" for="field_passportKey">Passport Key</label>
+                    <input type="text" class="form-control" name="passportKey" id="field_passportKey"
+                           formControlName="passportKey"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsPersons.transactionType" for="field_transactionType">Transaction Type</label>
+                    <input type="number" class="form-control" name="transactionType" id="field_transactionType"
+                           formControlName="transactionType"/>
+                    <div *ngIf="editForm.get('transactionType').invalid && (editForm.get('transactionType').dirty || editForm.get('transactionType').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('transactionType').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('transactionType')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.dlsPersons.exported" for="field_exported">Exported</label>
+                    <input type="checkbox" class="form-control" name="exported" id="field_exported"
+                           formControlName="exported"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

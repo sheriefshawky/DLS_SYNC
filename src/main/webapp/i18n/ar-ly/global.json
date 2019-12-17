@@ -7,6 +7,10 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "الكيانات",
+        "dlsPersons": "Dls Persons",
+        "dlsRequests": "Dls Requests",
+        "dlsReqExams": "Dls Req Exams",
+        "dlsReqTrainings": "Dls Req Trainings",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
