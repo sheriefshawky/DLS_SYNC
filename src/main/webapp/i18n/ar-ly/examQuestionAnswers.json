@@ -1,0 +1,29 @@
+{
+  "dlssyncApp": {
+    "examQuestionAnswers": {
+      "home": {
+        "title": "Exam Question Answers",
+        "createLabel": "Create a new Exam Question Answers",
+        "createOrEditLabel": "Create or edit a Exam Question Answers",
+        "notFound": "No Exam Question Answers found"
+      },
+      "created": "A new Exam Question Answers is created with identifier {{ param }}",
+      "updated": "A Exam Question Answers is updated with identifier {{ param }}",
+      "deleted": "A Exam Question Answers is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Exam Question Answers {{ id }}?"
+      },
+      "detail": {
+        "title": "Exam Question Answers"
+      },
+      "descAr": "Desc Ar",
+      "descEn": "Desc En",
+      "code": "Code",
+      "imgPath": "Img Path",
+      "isRightAnswer": "Is Right Answer",
+      "status": "Status",
+      "answerId": "Answer Id",
+      "examQuestions": "Exam Questions"
+    }
+  }
+}

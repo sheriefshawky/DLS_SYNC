@@ -1,0 +1,95 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="dlssyncApp.examQuestions.home.title">Exam Questions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-exam-questions" [routerLink]="['/exam-questions/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="dlssyncApp.examQuestions.home.createLabel">
+            Create a new Exam Questions
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="examQuestions?.length === 0">
+        <span jhiTranslate="dlssyncApp.examQuestions.home.notFound">No examQuestions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="examQuestions?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descAr"><span jhiTranslate="dlssyncApp.examQuestions.descAr">Desc Ar</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descEn"><span jhiTranslate="dlssyncApp.examQuestions.descEn">Desc En</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="code"><span jhiTranslate="dlssyncApp.examQuestions.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="imgPath"><span jhiTranslate="dlssyncApp.examQuestions.imgPath">Img Path</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="timeInSec"><span jhiTranslate="dlssyncApp.examQuestions.timeInSec">Time In Sec</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="type"><span jhiTranslate="dlssyncApp.examQuestions.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="weight"><span jhiTranslate="dlssyncApp.examQuestions.weight">Weight</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="score"><span jhiTranslate="dlssyncApp.examQuestions.score">Score</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="status"><span jhiTranslate="dlssyncApp.examQuestions.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="seq"><span jhiTranslate="dlssyncApp.examQuestions.seq">Seq</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="categoryId"><span jhiTranslate="dlssyncApp.examQuestions.categoryId">Category Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="questionId"><span jhiTranslate="dlssyncApp.examQuestions.questionId">Question Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="startAt"><span jhiTranslate="dlssyncApp.examQuestions.startAt">Start At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="submitAt"><span jhiTranslate="dlssyncApp.examQuestions.submitAt">Submit At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="exam.id"><span jhiTranslate="dlssyncApp.examQuestions.exam">Exam</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let examQuestions of examQuestions ;trackBy: trackId">
+                <td><a [routerLink]="['/exam-questions', examQuestions.id, 'view' ]">{{examQuestions.id}}</a></td>
+                <td>{{examQuestions.descAr}}</td>
+                <td>{{examQuestions.descEn}}</td>
+                <td>{{examQuestions.code}}</td>
+                <td>{{examQuestions.imgPath}}</td>
+                <td>{{examQuestions.timeInSec}}</td>
+                <td>{{examQuestions.type}}</td>
+                <td>{{examQuestions.weight}}</td>
+                <td>{{examQuestions.score}}</td>
+                <td>{{examQuestions.status}}</td>
+                <td>{{examQuestions.seq}}</td>
+                <td>{{examQuestions.categoryId}}</td>
+                <td>{{examQuestions.questionId}}</td>
+                <td>{{examQuestions.startAt | date:'medium'}}</td>
+                <td>{{examQuestions.submitAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="examQuestions.exam">
+                        <a [routerLink]="['/exam', examQuestions.exam?.id, 'view' ]" >{{examQuestions.exam?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/exam-questions', examQuestions.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/exam-questions', examQuestions.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(examQuestions)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="examQuestions?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

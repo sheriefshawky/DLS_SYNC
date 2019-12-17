@@ -1,0 +1,72 @@
+{
+    "name": "Exam",
+    "fields": [
+        {
+            "fieldName": "validfrom",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "validto",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "timeInSec",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "score",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "passScore",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "startAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "submitAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "template",
+            "otherEntityRelationshipName": "exam",
+            "relationshipName": "template",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "examQuestions",
+            "otherEntityRelationshipName": "exam",
+            "relationshipName": "examQuestions"
+        }
+    ],
+    "changelogDate": "20191217152622",
+    "entityTableName": "exam",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

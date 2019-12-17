@@ -1,0 +1,46 @@
+{
+    "name": "TemplateCategories",
+    "fields": [
+        {
+            "fieldName": "noOfQuestions",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "seq",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "categories",
+            "otherEntityRelationshipName": "templateCategories",
+            "relationshipName": "category",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "template",
+            "otherEntityRelationshipName": "categories",
+            "relationshipName": "template",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191217152621",
+    "entityTableName": "template_categories",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
