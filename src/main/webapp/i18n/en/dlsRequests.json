@@ -1,0 +1,27 @@
+{
+  "dlssyncApp": {
+    "dlsRequests": {
+      "home": {
+        "title": "Dls Requests",
+        "createLabel": "Create a new Dls Requests",
+        "createOrEditLabel": "Create or edit a Dls Requests",
+        "notFound": "No Dls Requests found"
+      },
+      "created": "A new Dls Requests is created with identifier {{ param }}",
+      "updated": "A Dls Requests is updated with identifier {{ param }}",
+      "deleted": "A Dls Requests is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dls Requests {{ id }}?"
+      },
+      "detail": {
+        "title": "Dls Requests"
+      },
+      "transactionType": "Transaction Type",
+      "requestNo": "Request No",
+      "exported": "Exported",
+      "exams": "Exams",
+      "trainings": "Trainings",
+      "dlsPersons": "Dls Persons"
+    }
+  }
+}

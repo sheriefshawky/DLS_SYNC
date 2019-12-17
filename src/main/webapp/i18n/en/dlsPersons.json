@@ -1,0 +1,29 @@
+{
+  "dlssyncApp": {
+    "dlsPersons": {
+      "home": {
+        "title": "Dls Persons",
+        "createLabel": "Create a new Dls Persons",
+        "createOrEditLabel": "Create or edit a Dls Persons",
+        "notFound": "No Dls Persons found"
+      },
+      "created": "A new Dls Persons is created with identifier {{ param }}",
+      "updated": "A Dls Persons is updated with identifier {{ param }}",
+      "deleted": "A Dls Persons is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dls Persons {{ id }}?"
+      },
+      "detail": {
+        "title": "Dls Persons"
+      },
+      "fullName": "Full Name",
+      "mobileNo": "Mobile No",
+      "licenseCategory": "License Category",
+      "nationalId": "National Id",
+      "passportKey": "Passport Key",
+      "transactionType": "Transaction Type",
+      "exported": "Exported",
+      "requests": "Requests"
+    }
+  }
+}

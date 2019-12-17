@@ -1,0 +1,28 @@
+{
+  "dlssyncApp": {
+    "dlsReqExams": {
+      "home": {
+        "title": "Dls Req Exams",
+        "createLabel": "Create a new Dls Req Exams",
+        "createOrEditLabel": "Create or edit a Dls Req Exams",
+        "notFound": "No Dls Req Exams found"
+      },
+      "created": "A new Dls Req Exams is created with identifier {{ param }}",
+      "updated": "A Dls Req Exams is updated with identifier {{ param }}",
+      "deleted": "A Dls Req Exams is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dls Req Exams {{ id }}?"
+      },
+      "detail": {
+        "title": "Dls Req Exams"
+      },
+      "examCode": "Exam Code",
+      "examResult": "Exam Result",
+      "examDate": "Exam Date",
+      "examGrade": "Exam Grade",
+      "isEligibile": "Is Eligibile",
+      "exported": "Exported",
+      "dlsRequests": "Dls Requests"
+    }
+  }
+}

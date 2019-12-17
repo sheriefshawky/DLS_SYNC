@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dlsPersons">
+            <h2><span jhiTranslate="dlssyncApp.dlsPersons.detail.title">Dls Persons</span> {{dlsPersons.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dlssyncApp.dlsPersons.fullName">Full Name</span></dt>
+                <dd>
+                    <span>{{dlsPersons.fullName}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsPersons.mobileNo">Mobile No</span></dt>
+                <dd>
+                    <span>{{dlsPersons.mobileNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsPersons.licenseCategory">License Category</span></dt>
+                <dd>
+                    <span>{{dlsPersons.licenseCategory}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsPersons.nationalId">National Id</span></dt>
+                <dd>
+                    <span>{{dlsPersons.nationalId}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsPersons.passportKey">Passport Key</span></dt>
+                <dd>
+                    <span>{{dlsPersons.passportKey}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsPersons.transactionType">Transaction Type</span></dt>
+                <dd>
+                    <span>{{dlsPersons.transactionType}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.dlsPersons.exported">Exported</span></dt>
+                <dd>
+                    <span>{{dlsPersons.exported}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dls-persons', dlsPersons.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

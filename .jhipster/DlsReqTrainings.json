@@ -1,0 +1,43 @@
+{
+    "name": "DlsReqTrainings",
+    "fields": [
+        {
+            "fieldName": "trainingCode",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "trainingLectures",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "trainingfulfilled",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "exported",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dlsRequests",
+            "otherEntityRelationshipName": "trainings",
+            "relationshipName": "dlsRequests",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191217103441",
+    "entityTableName": "dls_req_trainings",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

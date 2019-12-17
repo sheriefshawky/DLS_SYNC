@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="dlssyncApp.dlsRequests.home.title">Dls Requests</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dls-requests" [routerLink]="['/dls-requests/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="dlssyncApp.dlsRequests.home.createLabel">
+            Create a new Dls Requests
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="dlsRequests?.length === 0">
+        <span jhiTranslate="dlssyncApp.dlsRequests.home.notFound">No dlsRequests found</span>
+    </div>
+    <div class="table-responsive" *ngIf="dlsRequests?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="transactionType"><span jhiTranslate="dlssyncApp.dlsRequests.transactionType">Transaction Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="requestNo"><span jhiTranslate="dlssyncApp.dlsRequests.requestNo">Request No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="exported"><span jhiTranslate="dlssyncApp.dlsRequests.exported">Exported</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dlsPersons.id"><span jhiTranslate="dlssyncApp.dlsRequests.dlsPersons">Dls Persons</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dlsRequests of dlsRequests ;trackBy: trackId">
+                <td><a [routerLink]="['/dls-requests', dlsRequests.id, 'view' ]">{{dlsRequests.id}}</a></td>
+                <td>{{dlsRequests.transactionType}}</td>
+                <td>{{dlsRequests.requestNo}}</td>
+                <td>{{dlsRequests.exported}}</td>
+                <td>
+                    <div *ngIf="dlsRequests.dlsPersons">
+                        <a [routerLink]="['/dls-persons', dlsRequests.dlsPersons?.id, 'view' ]" >{{dlsRequests.dlsPersons?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/dls-requests', dlsRequests.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/dls-requests', dlsRequests.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(dlsRequests)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="dlsRequests?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

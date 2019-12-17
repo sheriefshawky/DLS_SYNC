@@ -1,0 +1,75 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="dlssyncApp.dlsReqTrainings.home.title">Dls Req Trainings</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dls-req-trainings" [routerLink]="['/dls-req-trainings/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="dlssyncApp.dlsReqTrainings.home.createLabel">
+            Create a new Dls Req Trainings
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="dlsReqTrainings?.length === 0">
+        <span jhiTranslate="dlssyncApp.dlsReqTrainings.home.notFound">No dlsReqTrainings found</span>
+    </div>
+    <div class="table-responsive" *ngIf="dlsReqTrainings?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="trainingCode"><span jhiTranslate="dlssyncApp.dlsReqTrainings.trainingCode">Training Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="trainingLectures"><span jhiTranslate="dlssyncApp.dlsReqTrainings.trainingLectures">Training Lectures</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="trainingfulfilled"><span jhiTranslate="dlssyncApp.dlsReqTrainings.trainingfulfilled">Trainingfulfilled</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="exported"><span jhiTranslate="dlssyncApp.dlsReqTrainings.exported">Exported</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dlsRequests.id"><span jhiTranslate="dlssyncApp.dlsReqTrainings.dlsRequests">Dls Requests</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dlsReqTrainings of dlsReqTrainings ;trackBy: trackId">
+                <td><a [routerLink]="['/dls-req-trainings', dlsReqTrainings.id, 'view' ]">{{dlsReqTrainings.id}}</a></td>
+                <td>{{dlsReqTrainings.trainingCode}}</td>
+                <td>{{dlsReqTrainings.trainingLectures}}</td>
+                <td>{{dlsReqTrainings.trainingfulfilled}}</td>
+                <td>{{dlsReqTrainings.exported}}</td>
+                <td>
+                    <div *ngIf="dlsReqTrainings.dlsRequests">
+                        <a [routerLink]="['/dls-requests', dlsReqTrainings.dlsRequests?.id, 'view' ]" >{{dlsReqTrainings.dlsRequests?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/dls-req-trainings', dlsReqTrainings.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/dls-req-trainings', dlsReqTrainings.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(dlsReqTrainings)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="dlsReqTrainings?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

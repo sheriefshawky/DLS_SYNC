@@ -1,0 +1,51 @@
+{
+    "name": "DlsRequests",
+    "fields": [
+        {
+            "fieldName": "transactionType",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "requestNo",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "exported",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "dlsReqExams",
+            "otherEntityRelationshipName": "dlsRequests",
+            "relationshipName": "exams"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "dlsReqTrainings",
+            "otherEntityRelationshipName": "dlsRequests",
+            "relationshipName": "trainings"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dlsPersons",
+            "otherEntityRelationshipName": "requests",
+            "relationshipName": "dlsPersons",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191217103439",
+    "entityTableName": "dls_requests",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
