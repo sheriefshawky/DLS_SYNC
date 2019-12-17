@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="examQuestions">
+            <h2><span jhiTranslate="dlssyncApp.examQuestions.detail.title">Exam Questions</span> {{examQuestions.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.descAr">Desc Ar</span></dt>
+                <dd>
+                    <span>{{examQuestions.descAr}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.descEn">Desc En</span></dt>
+                <dd>
+                    <span>{{examQuestions.descEn}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.code">Code</span></dt>
+                <dd>
+                    <span>{{examQuestions.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.imgPath">Img Path</span></dt>
+                <dd>
+                    <span>{{examQuestions.imgPath}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.timeInSec">Time In Sec</span></dt>
+                <dd>
+                    <span>{{examQuestions.timeInSec}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.type">Type</span></dt>
+                <dd>
+                    <span>{{examQuestions.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.weight">Weight</span></dt>
+                <dd>
+                    <span>{{examQuestions.weight}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.score">Score</span></dt>
+                <dd>
+                    <span>{{examQuestions.score}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.status">Status</span></dt>
+                <dd>
+                    <span>{{examQuestions.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.seq">Seq</span></dt>
+                <dd>
+                    <span>{{examQuestions.seq}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.categoryId">Category Id</span></dt>
+                <dd>
+                    <span>{{examQuestions.categoryId}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.questionId">Question Id</span></dt>
+                <dd>
+                    <span>{{examQuestions.questionId}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.examQuestions.exam">Exam</span></dt>
+                <dd>
+                    <div *ngIf="examQuestions.exam">
+                        <a [routerLink]="['/exam', examQuestions.exam?.id, 'view']">{{examQuestions.exam?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/exam-questions', examQuestions.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

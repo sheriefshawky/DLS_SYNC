@@ -1,0 +1,57 @@
+{
+    "name": "Answers",
+    "fields": [
+        {
+            "fieldName": "descAr",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descEn",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "imgPath",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isRightAnswer",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "questions",
+            "otherEntityRelationshipName": "answers",
+            "relationshipName": "questions",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191217104029",
+    "entityTableName": "answers",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

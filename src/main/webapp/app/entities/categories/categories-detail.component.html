@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="categories">
+            <h2><span jhiTranslate="dlssyncApp.categories.detail.title">Categories</span> {{categories.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dlssyncApp.categories.nameAr">Name Ar</span></dt>
+                <dd>
+                    <span>{{categories.nameAr}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.categories.nameEn">Name En</span></dt>
+                <dd>
+                    <span>{{categories.nameEn}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.categories.code">Code</span></dt>
+                <dd>
+                    <span>{{categories.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.categories.status">Status</span></dt>
+                <dd>
+                    <span>{{categories.status}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/categories', categories.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

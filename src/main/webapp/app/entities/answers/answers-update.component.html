@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-answers-heading" jhiTranslate="dlssyncApp.answers.home.createOrEditLabel">Create or edit a Answers</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.answers.descAr" for="field_descAr">Desc Ar</label>
+                    <input type="text" class="form-control" name="descAr" id="field_descAr"
+                           formControlName="descAr"/>
+                    <div *ngIf="editForm.get('descAr').invalid && (editForm.get('descAr').dirty || editForm.get('descAr').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descAr').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.answers.descEn" for="field_descEn">Desc En</label>
+                    <input type="text" class="form-control" name="descEn" id="field_descEn"
+                           formControlName="descEn"/>
+                    <div *ngIf="editForm.get('descEn').invalid && (editForm.get('descEn').dirty || editForm.get('descEn').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descEn').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.answers.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                           formControlName="code"/>
+                    <div *ngIf="editForm.get('code').invalid && (editForm.get('code').dirty || editForm.get('code').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('code').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.answers.imgPath" for="field_imgPath">Img Path</label>
+                    <input type="text" class="form-control" name="imgPath" id="field_imgPath"
+                           formControlName="imgPath"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.answers.isRightAnswer" for="field_isRightAnswer">Is Right Answer</label>
+                    <input type="checkbox" class="form-control" name="isRightAnswer" id="field_isRightAnswer"
+                           formControlName="isRightAnswer"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.answers.status" for="field_status">Status</label>
+                    <input type="number" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dlssyncApp.answers.questions" for="field_questions">Questions</label>
+                    <select class="form-control" id="field_questions" name="questions" formControlName="questions">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="questionsOption.id === editForm.get('questions').value?.id ? editForm.get('questions').value : questionsOption" *ngFor="let questionsOption of questions; trackBy: trackQuestionsById">{{questionsOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
