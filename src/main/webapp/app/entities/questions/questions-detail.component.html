@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="questions">
+            <h2><span jhiTranslate="dlssyncApp.questions.detail.title">Questions</span> {{questions.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dlssyncApp.questions.descAr">Desc Ar</span></dt>
+                <dd>
+                    <span>{{questions.descAr}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.questions.descEn">Desc En</span></dt>
+                <dd>
+                    <span>{{questions.descEn}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.questions.code">Code</span></dt>
+                <dd>
+                    <span>{{questions.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.questions.imgPath">Img Path</span></dt>
+                <dd>
+                    <span>{{questions.imgPath}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.questions.timeInSec">Time In Sec</span></dt>
+                <dd>
+                    <span>{{questions.timeInSec}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.questions.type">Type</span></dt>
+                <dd>
+                    <span>{{questions.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.questions.weight">Weight</span></dt>
+                <dd>
+                    <span>{{questions.weight}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.questions.status">Status</span></dt>
+                <dd>
+                    <span>{{questions.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="dlssyncApp.questions.categories">Categories</span></dt>
+                <dd>
+                    <div *ngIf="questions.categories">
+                        <a [routerLink]="['/categories', questions.categories?.id, 'view']">{{questions.categories?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/questions', questions.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

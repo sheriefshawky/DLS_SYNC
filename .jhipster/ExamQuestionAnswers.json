@@ -1,0 +1,61 @@
+{
+    "name": "ExamQuestionAnswers",
+    "fields": [
+        {
+            "fieldName": "descAr",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descEn",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "imgPath",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isRightAnswer",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "answerId",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "examQuestions",
+            "otherEntityRelationshipName": "examQuestionAnswers",
+            "relationshipName": "examQuestions",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191217104034",
+    "entityTableName": "exam_question_answers",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
